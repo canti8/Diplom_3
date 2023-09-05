@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.junit4.DisplayName;
@@ -26,6 +27,10 @@ public class ConstructorTestCase {
     @Before
     public void setUp() {
         WebDriverManager.chromedriver().setup();
+
+        Configuration.browser = "chrome";
+        Configuration.timeout = 10000;
+
         profile = ProfileGenerator.getRandom();
         Registration registration = open(Registration.URL, Registration.class);
         registration.registerNewUser(profile);
@@ -61,9 +66,10 @@ public class ConstructorTestCase {
     public void checkTransitionToBunsSection() {
 
         Main main = open(Main.URL, Main.class);
+
         main.goToFillingsClick();
         main.goToBunsClick();
-        main.checkBunsClickOpen();
+        main.checkElementColor(main.bunsTab, "rgba(255, 255, 255, 1)");
     }
 
     @Tag("ConstructorTestCase")
@@ -72,8 +78,9 @@ public class ConstructorTestCase {
     public void checkTransitionToSaucesSection() {
 
         Main main = open(Main.URL, Main.class);
+
         main.goToSaucesClick();
-        main.checkSaucesClickOpen();
+        main.checkElementColor(main.saucesTab, "rgba(255, 255, 255, 1)");
     }
 
     @Tag("ConstructorTestCase")
@@ -82,7 +89,8 @@ public class ConstructorTestCase {
     public void checkTransitionToFillingsSection() {
 
         Main main = open(Main.URL, Main.class);
+
         main.goToFillingsClick();
-        main.checkFillingsClickOpen();
+        main.checkElementColor(main.fillingsTab, "rgba(255, 255, 255, 1)");
     }
 }

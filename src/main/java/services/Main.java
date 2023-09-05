@@ -1,6 +1,7 @@
 package services;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import pages.MainPage;
 
@@ -33,19 +34,9 @@ public class Main extends MainPage {
         bunsTab.click();
     }
 
-    @Step("Проверка видимости раздела Булки")
-    public void checkBunsClickOpen(){
-        bunsTitle.shouldBe(visible);
-    }
-
     @Step("Нажать на раздел Соусы")
     public void goToSaucesClick(){
         saucesTab.click();
-    }
-
-    @Step("Проверка видимости раздела Соусы")
-    public void checkSaucesClickOpen(){
-        saucesTitle.shouldBe(visible);
     }
 
     @Step("Нажать на раздел Начинки")
@@ -53,14 +44,18 @@ public class Main extends MainPage {
         fillingsTab.click();
     }
 
-    @Step("Проверка видимости раздела Начинки")
-    public void checkFillingsClickOpen(){
-        fillingsTitle.shouldBe(visible);
-    }
-
     @Step("Проверка видимости блока Конструктор")
     public void checkConstructorBlock(){
         constructorLabel.shouldBe(visible);
+    }
+
+    @Step("Проверка перехода в раздел")
+    public void checkElementColor(SelenideElement element, String expectedColor) {
+        String actualColor = element.getCssValue("color");
+
+        element.shouldNotHave(Condition.cssValue("color", actualColor));
+
+        element.shouldHave(Condition.cssValue("color", expectedColor));
     }
 
 }

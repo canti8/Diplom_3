@@ -24,20 +24,12 @@ public class MainPage {
     protected SelenideElement constructorLabel;
 
     @FindBy(how = How.CSS,using = ".BurgerIngredients_ingredients__1N8v2 .tab_tab__1SPyG:nth-child(1n)")
-    protected SelenideElement bunsTab;
-
-    @FindBy(how = How.CSS,using = ".BurgerIngredients_ingredients__menuContainer__Xu3Mo  > .text:nth-child(1)")
-    protected SelenideElement bunsTitle;
+    public SelenideElement bunsTab;
 
     @FindBy(how = How.CSS,using = ".BurgerIngredients_ingredients__1N8v2 .tab_tab__1SPyG:nth-child(2n)")
-    protected SelenideElement saucesTab;
-
-    @FindBy(how = How.CSS,using = ".BurgerIngredients_ingredients__menuContainer__Xu3Mo  > .text:nth-child(3)")
-    protected SelenideElement saucesTitle;
+    public SelenideElement saucesTab;
 
     @FindBy(how = How.CSS,using = ".BurgerIngredients_ingredients__1N8v2 .tab_tab__1SPyG:nth-child(3n)")
-    protected SelenideElement fillingsTab;
+    public SelenideElement fillingsTab;
 
-    @FindBy(how = How.CSS,using = ".BurgerIngredients_ingredients__menuContainer__Xu3Mo  > .text:nth-child(5)")
-    protected SelenideElement fillingsTitle;
 }
